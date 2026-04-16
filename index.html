@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify AI Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white dark:bg-[#121212] text-slate-900 dark:text-gray-100 transition-colors duration-300">
+
+    <nav class="flex items-center justify-between px-6 md:px-12 py-4 bg-white dark:bg-[#1a1a1a] border-b dark:border-gray-800 sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">AI</span>
+            </div>
+            <span class="font-bold text-xl tracking-tight text-[#1a365d] dark:text-blue-400">MOODIFY</span>
+        </div>
+        
+        <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#" class="hover:text-blue-600 transition">Home</a>
+            <a href="#" class="hover:text-blue-600 transition">Moodify AI</a>
+            <a href="#" class="hover:text-blue-600 transition">About Us</a>
+            <a href="#" class="hover:text-blue-600 transition">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:ring-2 ring-blue-400 transition">
+                <span id="theme-icon">🌙</span>
+            </button>
+            <button class="border dark:border-gray-600 px-4 py-1 rounded-md flex items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                English <span>▾</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="max-w-4xl mx-auto text-center py-20 px-6">
+        <h1 class="text-5xl font-extrabold text-[#1a365d] dark:text-white mb-6">Detect Early, Act Wisely</h1>
+        <p class="text-lg text-gray-500 dark:text-gray-400">Experience the future of emotion tracking. Our AI analyzes your facial expressions to provide instant mood insights.</p>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 mb-16">
+        <div class="intro-panel rounded-[2rem] p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center border border-white/10 shadow-2xl overflow-hidden">
+            <div class="space-y-6 relative z-10">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-300 text-sm font-semibold tracking-wide">
+                    AI Mood Introduction
+                </span>
+                <div class="space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                        Understand Feelings Through AI
+                    </h2>
+                    <p class="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-8">
+                        Welcome to this Mood Detector website. This project uses Artificial Intelligence to detect and understand human emotions such as happy, sad, angry, surprise, disgust, fear and neutral through facial expressions.
+                    </p>
+                    <p class="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-8">
+                        The goal of this website is to show how AI can recognize human feelings in real time and respond in a more intelligent way. It is designed as a simple demonstration of how machine learning models can be used in everyday applications like emotion tracking and interactive systems.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center">
+                <div class="intro-visual-card rounded-[2rem] p-6 md:p-8 w-full max-w-md">
+                    <div class="absolute -top-8 -left-8 w-24 h-24 rounded-full bg-cyan-400/20 blur-2xl"></div>
+                    <div class="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-blue-500/20 blur-3xl"></div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI assistant illustration" class="relative z-10 w-64 md:w-80 mx-auto floating-robot">
+                    <div class="relative z-10 mt-6 grid grid-cols-3 gap-3 text-center">
+                        <div class="rounded-2xl bg-white/70 dark:bg-white/10 px-3 py-4">
+                            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Happy</p>
+                            <p class="text-lg font-bold text-green-500">98%</p>
+                        </div>
+                        <div class="rounded-2xl bg-white/70 dark:bg-white/10 px-3 py-4">
+                            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Neutral</p>
+                            <p class="text-lg font-bold text-violet-500">87%</p>
+                        </div>
+                        <div class="rounded-2xl bg-white/70 dark:bg-white/10 px-3 py-4">
+                            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Focus</p>
+                            <p class="text-lg font-bold text-blue-500">AI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 mb-24">
+        <div class="bg-gray-50 dark:bg-[#1e1e1e] rounded-3xl p-8 md:p-12 shadow-xl border dark:border-gray-800 grid md:grid-cols-2 gap-12 items-center">
+            
+            <div id="media-container" class="relative bg-white dark:bg-[#2a2a2a] rounded-2xl aspect-square flex items-center justify-center border-2 border-dashed border-gray-200 dark:border-gray-700 overflow-hidden">
+                <p id="placeholder-text" class="text-gray-400 text-center px-4">Camera feed or uploaded image will appear here</p>
+                
+                <video id="webcam" class="hidden w-full h-full object-cover" autoplay playsinline muted></video>
+                <img id="preview-img" class="hidden w-full h-full object-contain" />
+                
+                <div id="scan-line" class="hidden absolute top-0 left-0 w-full h-1 bg-blue-500 shadow-[0_0_15px_blue] z-20"></div>
+            </div>
+
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold">Start Mood Analysis</h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <button id="btn-camera" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transform active:scale-95 transition">
+                        Open Camera
+                    </button>
+
+                    <button id="btn-flip" class="hidden w-full border-2 border-gray-400 text-gray-600 dark:text-gray-300 font-bold py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        🔄 Flip Camera
+                    </button>
+
+                    <label class="w-full border-2 border-blue-600 text-blue-600 dark:text-blue-400 text-center font-bold py-4 rounded-xl cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
+                        Upload File
+                        <input type="file" id="file-upload" class="hidden" accept="image/*">
+                    </label>
+
+                    <button id="btn-confirm" class="hidden w-full bg-green-600 text-white font-bold py-4 rounded-xl hover:bg-green-700 transform active:scale-95 transition shadow-lg">
+                        Get Result Immediately
+                    </button>
+                </div>
+                
+                <div id="result-display" class="hidden p-6 bg-white dark:bg-[#2a2a2a] rounded-2xl border-l-4 border-blue-600 shadow-md">
+                    <span class="text-xs font-bold uppercase text-gray-400">Detection Result</span>
+                    <h3 id="mood-text" class="text-4xl font-black text-blue-600 mt-1">...</h3>
+                    <div class="mt-4 flex flex-col gap-3">
+                        <p id="voice-status" class="text-sm text-slate-500 dark:text-slate-400">Checking browser voice...</p>
+                        <!-- <p class="text-xs text-slate-400 dark:text-slate-500">Place `happy.mp3`, `sad.mp3`, `angry.mp3`, `neutral.mp3`, `fear.mp3`, `disgust.mp3`, and `surprise.mp3` inside the `audio` folder for reliable sound.</p> -->
+                        <select id="voice-select" class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 outline-none transition focus:ring-2 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                            <option value="">Default browser voice</option>
+                        </select>
+                        <div class="flex flex-wrap gap-3">
+                            <button id="btn-speak" class="hidden inline-flex items-center justify-center rounded-xl border border-blue-500/40 bg-blue-50 px-4 py-3 font-semibold text-blue-700 transition hover:bg-blue-100 dark:bg-blue-500/10 dark:text-blue-300 dark:hover:bg-blue-500/20">
+                                Speak Result
+                            </button>
+                            <button id="btn-test-voice" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
+                                Test Voice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 flex justify-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI Robot" class="w-72 md:w-96 floating-robot">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-4xl font-bold mb-8">Feedback Us</h2>
+                <form id="feedback-form" class="space-y-5">
+                    <div>
+                        <label class="text-sm font-semibold text-gray-400">Name</label>
+                        <input type="text" placeholder="Jane Smith" required class="w-full p-4 mt-1 bg-gray-50 dark:bg-[#2a2a2a] border dark:border-gray-700 rounded-xl outline-none focus:ring-2 ring-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="text-sm font-semibold text-gray-400">Email</label>
+                        <input type="email" placeholder="jane@framer.com" required class="w-full p-4 mt-1 bg-gray-50 dark:bg-[#2a2a2a] border dark:border-gray-700 rounded-xl outline-none focus:ring-2 ring-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="text-sm font-semibold text-gray-400">Message</label>
+                        <textarea rows="4" placeholder="Feedback us" required class="w-full p-4 mt-1 bg-gray-50 dark:bg-[#2a2a2a] border dark:border-gray-700 rounded-xl outline-none focus:ring-2 ring-blue-500 transition"></textarea>
+                    </div>
+                    <button type="submit" class="px-10 py-3 border-2 border-slate-900 dark:border-white font-bold rounded-xl hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0f344d] text-white pt-20 pb-10 px-6 md:px-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div>
+                <p class="font-bold text-lg mb-4">Email</p>
+                <p class="text-gray-300">moodify@gmail.com</p>
+            </div>
+            <div>
+                <p class="font-bold text-lg mb-4">Office Address</p>
+                <p class="text-gray-300">Phnom Penh</p>
+            </div>
+            <div>
+                <p class="font-bold text-lg mb-4">Phone Number</p>
+                <p class="text-gray-300">+855 12131415</p>
+            </div>
+            <div class="flex flex-col gap-3">
+                <a href="#" class="hover:text-blue-300 transition">Twitter ↗</a>
+                <a href="#" class="hover:text-blue-300 transition">LinkedIn ↗</a>
+                <a href="#" class="hover:text-blue-300 transition">Instagram ↗</a>
+                <a href="#" class="hover:text-blue-300 transition">Facebook ↗</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-600 pt-8 flex justify-end">
+            <p class="text-gray-400 text-sm">© 2026 Moodify All Right Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

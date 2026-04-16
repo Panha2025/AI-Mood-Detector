@@ -1,0 +1,166 @@
+/* Robot Floating Effect */
+.floating-robot {
+    animation: float 5s ease-in-out infinite;
+}
+
+.intro-panel {
+    background:
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.18), transparent 28%),
+        linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.9));
+}
+
+.intro-visual-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.75));
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    box-shadow: 0 24px 80px rgba(2, 6, 23, 0.45);
+    backdrop-filter: blur(12px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(2deg); }
+}
+
+/* AI Scanning Line Animation - Fixed to move Top to Bottom */
+@keyframes scan {
+    0% { 
+        top: 0%; 
+        opacity: 0; 
+    }
+    10% { 
+        opacity: 1; 
+    }
+    90% { 
+        opacity: 1; 
+    }
+    100% { 
+        top: 100%; 
+        opacity: 0; 
+    }
+}
+
+.scanning {
+    display: block !important;
+    animation: scan 2s linear infinite;
+}
+
+/* Custom Scrollbar for Dark Mode */
+.dark ::-webkit-scrollbar { width: 10px; }
+.dark ::-webkit-scrollbar-track { background: #0f172a; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+
+/* Pulse effect for the Confirm Button when it appears */
+#btn-confirm {
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Ensure the video and image fill the container correctly */
+#webcam, #preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .intro-panel {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-robot {
+        animation-duration: 6s;
+    }
+
+    header h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.1;
+    }
+
+    .intro-panel {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .intro-visual-card {
+        padding: 1.25rem;
+        border-radius: 1.5rem;
+    }
+
+    #media-container {
+        min-height: 320px;
+    }
+
+    #result-display {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    nav {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    header {
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+    }
+
+    header h1 {
+        font-size: 2rem !important;
+    }
+
+    header p {
+        font-size: 1rem !important;
+        line-height: 1.8;
+    }
+
+    .intro-panel h2 {
+        font-size: 2rem !important;
+    }
+
+    .intro-panel p {
+        font-size: 0.98rem !important;
+        line-height: 1.9;
+    }
+
+    .intro-visual-card img {
+        width: 13rem !important;
+    }
+
+    #media-container {
+        min-height: 280px;
+    }
+
+    #btn-camera,
+    #btn-flip,
+    #btn-confirm,
+    #btn-speak,
+    #btn-test-voice,
+    #voice-select {
+        width: 100%;
+    }
+
+    #result-display .flex-wrap {
+        flex-direction: column;
+    }
+
+    footer {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
